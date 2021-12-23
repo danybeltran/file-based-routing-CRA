@@ -23,22 +23,29 @@ function getPages() {
 
           if (pageFileName.split(".")[0] === "index") {
             pagesString.push(
-              `"${
-                fullPagePath.replace("/pages", "").split("/index")[0]
-              }": require(".${fullPagePath
+              `"${fullPagePath
+                .replace("/pages", "")
+                .split("/index")[0]
+                .replaceAll("[", ":")
+                .replaceAll("]", "")}": require(".${fullPagePath
                 .replace(".", "")
                 .replace(/(.tsx|.jsx|.js)/g, ".js")}").default,`
             )
             pagesString.push(
-              `"${
-                fullPagePath.replace("/pages", "").split("index")[0]
-              }": require(".${fullPagePath
+              `"${fullPagePath
+                .replace("/pages", "")
+                .split("index")[0]
+                .replaceAll("[", ":")
+                .replaceAll("]", "")}": require(".${fullPagePath
                 .replace(".", "")
                 .replace(/(.tsx|.jsx|.js)/g, ".js")}").default,`
             )
           }
           pagesString.push(
-            `"${fullPagePath.replace("/pages", "")}": require(".${fullPagePath
+            `"${fullPagePath
+              .replace("/pages", "")
+              .replaceAll("[", ":")
+              .replaceAll("]", "")}": require(".${fullPagePath
               .replace(".", "")
               .replace(/(.tsx|.jsx|.js)/g, ".js")}").default,`
           )

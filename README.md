@@ -9,7 +9,8 @@ Pages should be inside `src/pages` and have a default export. This works with ne
 
 - This is a test
 
-- There's still no params so there are no dynamic routes.
+- ~~There's still no params so there are no dynamic routes.~~
+- It works with params and dynamic routes (which can be defined somewhat like in Next.js using braces). You access them using the `useParams` hook in React-router-dom.
 
 
 When you create a page, you need to run the `mapPages.js` file so it gets added. It will generate a `$pages.js` file inside `src/`
@@ -26,16 +27,10 @@ const pages = {
   "": require("./pages/index").default,
   "/": require("./pages/index").default,
   "/index": require("./pages/index").default,
-  "/profile": require("./pages/profile/index").default,
-  "/profile/": require("./pages/profile/index").default,
-  "/profile/index": require("./pages/profile/index").default,
-  "/profile/nested": require("./pages/profile/nested").default,
-  "/profile/settings": require("./pages/profile/settings").default,
-  "/profile/level/level/nested": require("./pages/profile/level/level/nested")
-    .default,
+  "/user/profile": require("./pages/user/profile").default,
+  "/user/:id": require("./pages/user/[id]").default,
 }
 export default pages
-
 ```
 
-Routing is similar to the one in Next.js (but this is not very powerful)
+Routing is similar to the one in Next.js

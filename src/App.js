@@ -1,26 +1,19 @@
-import pages from "./$pages"
-
-function ErrorPage() {
-  return (
-    <div>
-      <h2
-        style={{
-          color: "red",
-        }}
-      >
-        Error
-      </h2>
-    </div>
-  )
-}
+import { BrowserRouter, Link } from "react-router-dom"
+import PageWithRoutes from "./components/RoutesMap"
 
 function App() {
-  const Page = pages[window.location.pathname] || ErrorPage
   return (
-    <div>
-      <a href="/">Index page</a>
-      <Page />
-    </div>
+    // This is the page layout
+    <BrowserRouter>
+      <div>
+        <Link to="/">Index</Link>
+        <br />
+        <Link to="/about">About</Link>
+        <br />
+        <Link to={"/user/12"}>User with id 12</Link>
+      </div>
+      <PageWithRoutes />
+    </BrowserRouter>
   )
 }
 
